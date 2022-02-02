@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {Fragment, useState, useRef} from "react";
+import { v4 as uuidv4} from "uuid";
+import { TodoList } from "./components/TodoList";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export function App(){
+    //listas: estado
+    //setListas: modificador del estado.
+    const [listas, setListas] = useState([
+        {id:1, task: "Tarea", completed:false},
+    ]);
+    // Referencia para obtener a la data ingresada y usarla en el handle
+    const taskRef = useRef();
+    //Metodo para añadir tareas
+    const handleTaskAdd = () =>{
+        //crear la referencia de la tarea
+        const task = taskRef.current.value;
+        // si la tarea es vacia no retorna nada (retorna vacio)
+        if (task==="") return;
+        // En caso de recibir informacion, creamos un nuevo
+        // elemento y hacemos cambios sobre el estado
+        setListas((prevTasks) =>{
+            return[...prevTasks, {id:uuidv4(), task, completed:false}];
+        });
+        taskRef.current.value = null; // limpiar el input cuando se añade
+    };
+    return (
+        //Fragment se utiliza para agrupar varios elementos
+        <Fragment>
+            <TodoList listas={listas}/>
+            <input ref={taskRef} type="text" placeholder="Nueva Tarea"/>
+            <button onClick={handleTaskAdd}>Agregar</button>
+            <button>Eliminar</button>
+        </Fragment>
+    );
 }
-
-export default App;
