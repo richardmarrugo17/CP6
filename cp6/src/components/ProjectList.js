@@ -1,15 +1,9 @@
-import ProyectListItem from "./ProyectListItem";
+import ProjectListItem from "./ProjectListItem";
 import Paginator from "./Paginator";
-function ProyectList(props){
+function ProjectList(props){
   const proyectos = props.proyectos;
   const ListaProyectos = proyectos.map(p =>
-      <ProyectListItem
-        id={p.id}
-        nombre={p.nombre}
-        descripcion={p.descripcion}
-        fecha={p.fecha}
-        director={p.director}
-      />
+    <ProjectListItem id={p.id} nombre={p.nombre} descripcion={p.descripcion} fecha={p.fecha} director={p.director}/>
   );
   return (
     <div className="container-fluid">
@@ -31,4 +25,4 @@ function ProyectList(props){
   );   
 }
 
-export default ProyectList;
+export default ProjectList;

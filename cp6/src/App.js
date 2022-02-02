@@ -1,6 +1,6 @@
 import './App.css';
 import NavBar from './components/NavBar';
-import ProyectList from './components/ProyectList';
+import ProjectList from './components/ProjectList';
 
 function App() {
   const Lista_datos = [
@@ -13,7 +13,7 @@ function App() {
   return (
     <div>
       <NavBar/>
-      <ProyectList proyectos={ Lista_datos }/>
+      <ProjectList proyectos={ Lista_datos }/>
       <footer className="bg-dark text-white mt-5 mt-lg-3">
           <div className="container-fluid">
               <div className="card bg-dark">

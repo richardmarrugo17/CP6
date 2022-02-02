@@ -1,4 +1,4 @@
-function ProyectListItem (props){
+function ProjectListItem (props){
     return (
         <a href="none" className="list-group-item list-group-item-action" aria-current="true">
         <div className="d-flex w-100 justify-content-between">
@@ -13,4 +13,4 @@ function ProyectListItem (props){
     );
 }
 
-export default ProyectListItem;
+export default ProjectListItem;
